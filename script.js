@@ -1,6 +1,12 @@
 async function loadModel() {
-    const model = await tf.loadGraphModel('model.json'); // Adjust if needed
-    return model;
+    try {
+        console.log("Loading model...");
+        const model = await tf.loadGraphModel('model.json'); // Ensure the correct path
+        console.log("Model loaded successfully!");
+        return model;
+    } catch (error) {
+        console.error("Error loading model:", error);
+    }
 }
 
 document.getElementById('imageInput').addEventListener('change', async (event) => {
